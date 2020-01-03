@@ -3,33 +3,43 @@ const jwt = require('jsonwebtoken')
 
 const user = new mongoose.Schema({
     name: {
-        type : String
+        type : String,
+        required:true
     },
 
     email: {
-        type : String
+        type : String,
+        required:true
+
     },
 
-    dob : {
-        type : String
+    dob: {
+        type : String,
+        required:true
+
     },
 
-    gender : {
-        type : String
+    gender: {
+        type : String,
+        required:true
+
     },
     
-    phone : {
-        type : String
+    phone: {
+        type : String,
+        required:true
+
     },
 
-    password : {
-        type : String
+    password: {
+        type : String,
+        required:true
+
     },
 
     tokens: [{
         token: {
-            type: String,
-            required: true
+            type: String
         }
     }]
 
@@ -37,7 +47,7 @@ const user = new mongoose.Schema({
 
 user.statics.checkCrediantialsDb = async (user22, pass) => {
 
-    const user1 = await User.findOne({ username: user22, password: pass })
+    const user1 = await User.findOne({ email: user22, password: pass })
     return user1;
 }
 
