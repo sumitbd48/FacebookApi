@@ -29,23 +29,4 @@ router.post('/login', async function (req, res) {
         res.status(400).send()
     }
 })
-
-//update
-router.put('/update/:_id', function (req, res) {
-    User.findOneAndUpdate({ _id: req.params._id }, req.body).then(function () {
-        res.send("Updated Successfully!")
-    }).catch(function (e) {
-        res.send(e)
-    });
-})
-
-//delete
-router.delete('/deleteuser/:_id', function (req, res) {
-    User.findByIdAndDelete(req.params._id).then(function () {
-        res.send("User Deleted!!")
-    }).catch(function (e) {
-        res.send(e);
-    });
-})
-
 module.exports = router
