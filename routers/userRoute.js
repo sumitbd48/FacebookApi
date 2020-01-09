@@ -23,7 +23,8 @@ router.post('/login', async function (req, res) {
         const user = await User.checkCrediantialsDb(req.body.email,
             req.body.password)
         const token = await user.generateAuthToken()
-            res.send({ user, token })
+        const name = await user.name
+            res.send({ name, token })
     } catch (e) {
         res.status(400).send()
     }
